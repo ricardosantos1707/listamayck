@@ -1,0 +1,519 @@
+1 - 
+#include <stdio.h>
+long long fatorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1; 
+    }
+    return n * fatorial(n - 1); 
+}
+
+int main() {
+    int nu;
+    
+    printf("Digite um número inteiro não negativo: ");
+    scanf("%d", &nu);
+    
+    if (num < 0) {
+        printf("O fatorial não está definido para números negativos.\n");
+    } else {
+        printf("Fatorial de %d é %lld\n", nu, fatorial(nu));
+    }
+    
+    return 0;
+}
+
+
+2 -
+int soma_numeros(int n) {
+
+    if (n == 1) {
+        return 1;
+    }
+   
+    return n + soma_numeros(n - 1);
+}
+
+int main() {
+    int n;
+    printf("Digite um número: ");
+    scanf("%d", &n);
+
+    int resultado = soma_numeros(n);
+    printf("A soma dos primeiros %d números naturais é: %d\n", n, resultado);
+    
+    return 0;
+}
+
+
+3 -
+int fibonacci(int n) {
+    if (n == 0) {
+        return 0;
+    } else if (n == 1) {
+        return 1;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n;
+    
+    printf("Digite o valor de n: ");
+    scanf("%d", &n);
+
+    printf("Fibonacci(%d) = %d\n", n, fibonacci(n));
+    
+    return 0;
+}
+
+
+4 -
+int potencia(int x, int n) {
+    
+    if (n == 0) {
+        return 1;
+    }
+    
+    if (n % 2 != 0) {
+        return x * potencia(x, n - 1);
+    }
+
+    int half = potencia(x, n / 2);
+    return half * half;
+}
+
+int main() {
+    int x = 2;
+    int n = 5;
+    
+    printf("%d^%d = %d\n", x, n, potencia(x, n));
+    return 0;
+}
+
+
+5 -
+void contagemRegressiva(int n) {
+    if (n < 0) {
+        return;  
+    }
+    printf("%d", n);  
+    contagemRegressiva(n - 1);  
+}
+
+int main() {
+    int n;
+    printf("Digite um número: ");
+    scanf("%d", &n);  
+    contagemRegressiva(n);  
+    return 0;
+}
+
+
+6 -
+int soma_digitos(int n) {
+    
+    if (n == 0) {
+        return 0;
+    } else {
+       
+        return n % 10 + soma_digitos(n / 10);
+    }
+}
+
+int main() {
+    int numero;
+   
+    printf("Digite um número inteiro positivo: ");
+    scanf("%d", &numero);
+    
+    printf("A soma dos dígitos de %d é: %d\n", numero, soma_digitos(numero));
+    
+    return 0;
+}
+
+7 -
+#include <stdio.h>
+#include <string.h>
+
+void inverterString(char *str, int inicio, int fim) {
+    
+    if (inicio >= fim) {
+        return;
+    }
+    
+    char temp = str[inicio];
+    str[inicio] = str[fim];
+    str[fim] = temp;
+    
+    inverterString(str, inicio + 1, fim - 1);
+}
+
+int main() {
+    char str[] = "recursão"; 
+
+    inverterString(str, 0, strlen(str) - 1);
+
+    printf("String invertida: %s\n", str);
+    
+    return 0;
+}
+
+
+8 - 
+#include <stdio.h>
+
+int ehPalindromo(char *str, int inicio, int fim) {
+    if (inicio >= fim) return 1;
+    if (str[inicio] != str[fim]) return 0;
+    return ehPalindromo(str, inicio + 1, fim - 1);
+}
+
+
+9 -
+#include <stdio.h>
+
+int mdc(int a, int b) {
+    if (b == 0) return a;
+    return mdc(b, a % b);
+}
+
+
+10 - 
+#include <stdio.h>
+
+int multiplicar(int a, int b) {
+    if (b == 0) return 0;
+    return a + multiplicar(a, b - 1);
+}
+
+
+11 - 
+#include <stdio.h>
+
+int contarChar(char *str, char c) {
+    if (*str == '\0') return 0;
+    return (*str == c) + contarChar(str + 1, c);
+}
+
+
+12 - 
+#include <stdio.h>
+
+int somaArray(int arr[], int n) {
+    if (n == 0) return 0;
+    return arr[n-1] + somaArray(arr, n-1);
+}
+
+
+13 - 
+#include <stdio.h>
+
+int ehPrimoAux(int n, int divisor) {
+    if (divisor * divisor > n) return 1;
+    if (n % divisor == 0) return 0;
+    return ehPrimoAux(n, divisor + 1);
+}
+
+int ehPrimo(int n) {
+    if (n <= 1) return 0;
+    return ehPrimoAux(n, 2);
+}
+
+
+14 - 
+#include <stdio.h>
+
+void decimalParaBinario(int n) {
+    if (n == 0) return;
+    decimalParaBinario(n / 2);
+    printf("%d", n % 2);
+}
+
+
+15 - 
+#include <stdio.h>
+
+void imprimirPares(int n) {
+    if (n < 0) return;
+    imprimirPares(n - 2);
+    if (n % 2 == 0) printf("%d ", n);
+}
+
+
+16 - 
+#include <stdio.h>
+
+void imprimirImpares(int n) {
+    if (n <= 0) return;
+    imprimirImpares(n - 2);
+    if (n % 2 != 0) printf("%d ", n);
+}
+
+
+17 - 
+#include <stdio.h>
+
+int buscaArray(int arr[], int n, int x) {
+    if (n == 0) return 0;
+    if (arr[n-1] == x) return 1;
+    return buscaArray(arr, n-1, x);
+}
+
+
+18 -
+#include <stdio.h>
+
+int comprimento(char *str) {
+    if (*str == '\0') return 0;
+    return 1 + comprimento(str + 1);
+}
+
+
+19 -
+#include <stdio.h>
+
+void torreDeHanoi(int n, char origem, char auxiliar, char destino) {
+    if (n == 1) {
+        printf("Mover disco 1 de %c para %c\n", origem, destino);
+        return;
+    }
+    torreDeHanoi(n-1, origem, destino, auxiliar);
+    printf("Mover disco %d de %c para %c\n", n, origem, destino);
+    torreDeHanoi(n-1, auxiliar, origem, destino);
+}
+
+
+20 -
+#include <stdio.h>
+#include <string.h>
+
+void swap(char *x, char *y) {
+    char temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+void permutar(char *str, int l, int r) {
+    if (l == r) {
+        printf("%s\n", str);
+        return;
+    }
+    for (int i = l; i <= r; i++) {
+        swap((str+l), (str+i));
+        permutar(str, l+1, r);
+        swap((str+l), (str+i)); // backtrack
+    }
+}
+
+
+21 -
+#include <stdio.h>
+
+void combinacoes(int arr[], int n, int k, int index, int data[], int i) {
+    if (index == k) {
+        for (int j = 0; j < k; j++) printf("%d ", data[j]);
+        printf("\n");
+        return;
+    }
+    if (i >= n) return;
+
+    data[index] = arr[i];
+    combinacoes(arr, n, k, index + 1, data, i + 1);
+    combinacoes(arr, n, k, index, data, i + 1);
+}
+
+
+22 -
+#include <stdio.h>
+
+void subconjuntos(int arr[], int n, int index, int subset[], int subsetSize) {
+    if (index == n) {
+        printf("{ ");
+        for (int i = 0; i < subsetSize; i++) printf("%d ", subset[i]);
+        printf("}\n");
+        return;
+    }
+    subset[subsetSize] = arr[index];
+    subconjuntos(arr, n, index + 1, subset, subsetSize + 1);
+    subconjuntos(arr, n, index + 1, subset, subsetSize);
+}
+
+
+23 - 
+#include <stdio.h>
+
+void merge(int arr[], int l, int m, int r) {
+    int i, j, k;
+    int n1 = m - l + 1;
+    int n2 = r - m;
+    int L[n1], R[n2];
+
+    for (i = 0; i < n1; i++) L[i] = arr[l + i];
+    for (j = 0; j < n2; j++) R[j] = arr[m + 1+ j];
+
+    i = 0; j = 0; k = l;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) arr[k++] = L[i++];
+        else arr[k++] = R[j++];
+    }
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
+}
+
+void mergeSort(int arr[], int l, int r) {
+    if (l < r) {
+        int m = (l+r)/2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m+1, r);
+        merge(arr, l, m, r);
+    }
+}
+
+
+24 - 
+#include <stdio.h>
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high], i = low - 1, temp;
+    for (int j = low; j < high; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            temp = arr[i]; arr[i] = arr[j]; arr[j] = temp;
+        }
+    }
+    temp = arr[i+1]; arr[i+1] = arr[high]; arr[high] = temp;
+    return i+1;
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi-1);
+        quickSort(arr, pi+1, high);
+    }
+}
+
+
+
+25 -
+#include <stdio.h>
+
+int buscaBinaria(int arr[], int l, int r, int x) {
+    if (l > r) return -1;
+    int mid = (l + r) / 2;
+    if (arr[mid] == x) return mid;
+    if (arr[mid] > x) return buscaBinaria(arr, l, mid - 1, x);
+    else return buscaBinaria(arr, mid + 1, r, x);
+}
+
+
+26 - 
+#include <stdio.h>
+
+int exponenciacaoRapida(int x, int n) {
+    if (n == 0) return 1;
+    if (n % 2 == 0) {
+        int half = exponenciacaoRapida(x, n/2);
+        return half * half;
+    } else {
+        return x * exponenciacaoRapida(x, n-1);
+    }
+}
+
+
+27 - 
+#include <stdio.h>
+
+void caminhoMatriz(int i, int j, int x2, int y2) {
+    if (i > x2 || j > y2) return;
+    if (i == x2 && j == y2) {
+        printf("(%d,%d)\n", i, j);
+        return;
+    }
+    printf("(%d,%d) -> ", i, j);
+    caminhoMatriz(i, j+1, x2, y2);
+    caminhoMatriz(i+1, j, x2, y2);
+}
+
+
+28 - 
+#include <stdio.h>
+
+#define N 4
+
+int tabuleiro[N][N];
+
+int podeColocar(int row, int col) {
+    for (int i = 0; i < row; i++)
+        if (tabuleiro[i][col]) return 0;
+    for (int i=row, j=col; i>=0 && j>=0; i--, j--)
+        if (tabuleiro[i][j]) return 0;
+    for (int i=row, j=col; i>=0 && j<N; i--, j++)
+        if (tabuleiro[i][j]) return 0;
+    return 1;
+}
+
+void mostrar() {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf(tabuleiro[i][j] ? "Q " : ". ");
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+void resolver(int row) {
+    if (row == N) {
+        mostrar();
+        return;
+    }
+    for (int i = 0; i < N; i++) {
+        if (podeColocar(row, i)) {
+            tabuleiro[row][i] = 1;
+            resolver(row + 1);
+            tabuleiro[row][i] = 0;
+        }
+    }
+}
+
+
+29 -
+#include <stdio.h>
+
+int valido(int labirinto[10][10], int x, int y, int n, int m) {
+    return (x >= 0 && x < n && y >= 0 && y < m && labirinto[x][y] == 0);
+}
+
+int resolverLabirinto(int labirinto[10][10], int x, int y, int n, int m) {
+    if (x == n-1 && y == m-1) {
+        labirinto[x][y] = 2;
+        return 1;
+    }
+    if (valido(labirinto, x, y, n, m)) {
+        labirinto[x][y] = 2;
+        if (resolverLabirinto(labirinto, x+1, y, n, m)) return 1;
+        if (resolverLabirinto(labirinto, x, y+1, n, m)) return 1;
+        labirinto[x][y] = 0;
+    }
+    return 0;
+}
+
+
+30 -
+#include <stdio.h>
+void gerarParenteses(int aberto, int fechado, char str[], int i, int n) {
+    if (i == 2*n) {
+        str[i] = '\0';
+        printf("%s\n", str);
+        return;
+    }
+    if (aberto < n) {
+        str[i] = '(';
+        gerarParenteses(aberto+1, fechado, str, i+1, n);
+    }
+    if (fechado < aberto) {
+        str[i] = ')';
+        gerarParenteses(aberto, fechado+1, str, i+1, n);
+    }
+}
